@@ -59,7 +59,9 @@ Verify Security Group
 
 <img width="1806" height="868" alt="Image" src="https://github.com/user-attachments/assets/e57a6c6f-8893-48df-9e59-2f434b27ec90" />
 
+
 Connect your ec2 instance to your local machine thorugh ssh use your key-pair .pem 
+
 to connect your ec2 instance use this command before ssh give that file to 400 permission.
 For permission
 
@@ -67,9 +69,12 @@ For permission
 
 For ssh
 
+
 `ssh -i "pathof_your_.pem_key" ubuntu@ec2<PublicIPofEc2Instance>.ap-south-1.compute.amazonaws.com`
 
-<image 4>
+
+<img width="1247" height="846" alt="Image" src="https://github.com/user-attachments/assets/cc3c59a6-9353-4890-a9c2-610621547d05" />
+
 
 ************ Install and Set up nginx ************ 
 
@@ -87,10 +92,6 @@ Step 3: Start & Enable NGINX Service
 `sudo systemctl start nginx`
 
 `sudo systemctl enable nginx`
-
-(Optional: Restart if needed)
-
-`sudo systemctl restart nginx`
  
 Step 4: Verify NGINX Installation
 
@@ -109,6 +110,7 @@ Step 4: Verify NGINX Installation
 (Default index.html file should exist)
 
   C. Access NGINX in Browser
+  
 Copy the Public IP of your EC2 instance
 Open browser and visit:
 
