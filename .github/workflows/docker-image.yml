@@ -20,7 +20,7 @@ jobs:
       - name: Login to Docker Hub
         run: |
          echo "${{ secrets.DOCKER_PASS }}" | docker login \
-         -u "${{ secrets.DOCKER_USER }}" \
+         -u "${{ secrets.MY_USER }}" \
          --password-stdin
 
       - name: Build Backend Docker Image
