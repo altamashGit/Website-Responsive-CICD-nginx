@@ -20,19 +20,12 @@ jobs:
       - name: Login to Docker Hub
         run: |
          echo "${{ secrets.DOCKER_PASS }}" | docker login \
-         -u "${{ vars.MY_USER }}" \
+         -u "${{ vars.DOCKER_USER }}" \
          --password-stdin
 
       - name: Build Backend Docker Image
         run: |
           docker build \
-            -f backend/Dockerfile \
+            -f ./ \
             -t altamsh/backend:latest \
             backend
-
-      - name: Build Frontend Docker Image
-        run: |
-          docker build \
-            -f frontend/Dockerfile \
-            -t altamsh/frontend:latest \
-            frontend
