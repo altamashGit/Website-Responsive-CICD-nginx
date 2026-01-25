@@ -1,20 +1,38 @@
 name: Docker Image CI
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "project" ]
+    branches:
+      - project
   pull_request:
-    branches: [ "project" ]
+    branches:
+      - project
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: chekout code
-      uses: actions/checkout@v4
-    
-    - name: Build the Docker image
-      run: docker build -t new:latest .
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        run: |
+          docker login \
+            -u ${{ secrets.DOCKER_USER }} \
+            -p ${{ secrets.DOCKER_PASS }}
+
+      - name: Build Backend Docker Image
+        run: |
+          docker build \
+            -f backend/Dockerfile \
+            -t altamsh/backend:latest \
+            backend
+
+      - name: Build Frontend Docker Image
+        run: |
+          docker build \
+            -f frontend/Dockerfile \
+            -t altamsh/frontend:latest \
+            frontend
